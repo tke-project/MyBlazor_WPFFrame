@@ -1,0 +1,26 @@
+﻿@inject IJSRuntime JSRuntime
+
+@page "/"
+
+<script>
+    $(document).ready(function () {
+        if ($('#summernote').length) {
+            $('#summernote').remove();
+        }
+    });
+</script>
+
+<PageTitle>Home</PageTitle>
+
+
+<h1>Blazor入門用サンプルアプリ</h1>
+
+Welcome!!
+
+@code {
+
+    protected override async Task OnInitializedAsync()
+    {
+        await JSRuntime.InvokeVoidAsync("unloadSummernote");
+    }
+}
